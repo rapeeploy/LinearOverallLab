@@ -64,13 +64,13 @@ def gaussian_elimination(A, B):
         print(f"\n### Step {i+1} (Pivot row {i+1}):")
 
         pivot = augmented_matrix[i][i]
-        print(f"Pivot element before normalization: {pivot}")
+        print(f"Pivot element before normalization: " , "{:.2f}".format(pivot))
 
         if pivot == 0:
             print(f"Cannot find non-zero pivot in column {i+1}, skipping.")
             for j in range(i+1, n):
                 if augmented_matrix[j][i] != 0:
-                    print(f"Swapping row {i+1} with row {j+1} for non-zero pivot:")
+                    print(f"Swapping row  ", "{:.2f}".format(i+1) ," with row ","{:.2f}".format(j+1) ," for non-zero pivot:")
                     augmented_matrix[[i, j]] = augmented_matrix[[j, i]]
                     break
         augmented_matrix[i] = augmented_matrix[i] / pivot
@@ -79,14 +79,15 @@ def gaussian_elimination(A, B):
             augmented_matrix[j] = augmented_matrix[j] - factor * augmented_matrix[i]
 
         # print(f"step {i+1} (Forward Elimination):")
-        print(f"Normalized pivot row {i+1}:")
+        print(f"Normalized pivot row ", "{:.2f}".format(i+1))
         print(augmented_matrix)
 
     # Back Substitution
     x = np.zeros(n)
     for i in range(n-1, -1, -1):
         x[i] = augmented_matrix[i][-1] - np.sum(augmented_matrix[i][i+1:n] * x[i+1:n])
-        print(f"Back Substitution for x[{i+1}] = {x[i]}")
+        # print(f"Back Substitution for x[{i+1}] = {x[i]}")
+        print(f"Back Substitution for x[{i+1}] = ", "{:.2f}".format(x[i]))
 
     print("\nSolution Vector X:")
     print(x)
@@ -149,4 +150,3 @@ def run_Linear_Equation ():
             
         else:
             print("Invalid choice! Please select from 1 to 8.")
-# Run the program
