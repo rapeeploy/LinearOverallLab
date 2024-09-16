@@ -16,6 +16,7 @@ def main():
         elif p ==2 :
             run_Linear_Equation()
         elif p == 0:
+            print("CLOSING...")
             exit()
         else:
             print("Invalid Input")
