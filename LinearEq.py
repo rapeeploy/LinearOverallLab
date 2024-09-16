@@ -12,22 +12,45 @@ def algorithm_menu():
 
 # Function to input the system of equations as matrix A and B
 def input_system():
-    n = int(input("Enter the number of variables: "))
-    print("Enter the coefficients matrix A (row-wise):")
+    while True:
+        try:
+            n = int(input("Enter the number of variables: "))
+            if n <= 0:
+                raise ValueError("Number of variables must be a positive integer.")
+            break
+        except ValueError as e:
+            print(f"Invalid input: {e}. Please enter a valid positive integer.")
+
+    # Input for matrix A
     A = []
+    print("Enter the coefficients matrix A (row-wise):")
     for i in range(n):
-        row = list(map(float, input().split()))
-        A.append(row)
+        while True:
+            try:
+                row = list(map(float, input(f"Enter row {i+1} (separate elements with spaces): ").split()))
+                if len(row) != n:
+                    raise ValueError(f"Row {i+1} must have exactly {n} elements.")
+                A.append(row)
+                break
+            except ValueError as e:
+                print(f"Invalid input: {e}. Please try again.")
     A = np.array(A)
 
-    print("Enter the constant matrix B:")
+    # Input for matrix B
     B = []
+    print("Enter the constant matrix B:")
     for i in range(n):
-        b = float(input())
-        B.append(b)
+        while True:
+            try:
+                b = float(input(f"Enter element B[{i+1}]: "))
+                B.append(b)
+                break
+            except ValueError:
+                print("Invalid input. Please enter a valid number.")
     B = np.array(B)
 
     return A, B
+
 # Gaussian Elimination method
 def gaussian_elimination(A, B):
     n = len(B)

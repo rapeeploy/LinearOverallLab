@@ -17,13 +17,30 @@ def matrix_menu():
 
 # Function to take matrix input from the user
 def input_matrix():
-    rows = int(input("Enter number of rows: "))
-    cols = int(input("Enter number of columns: "))
-    print(f"Enter the elements of {rows}x{cols} matrix (row-wise):")
+    while True:
+        try:
+            rows = int(input("Enter number of rows: "))
+            cols = int(input("Enter number of columns: "))
+            if rows <= 0 or cols <= 0:
+                raise ValueError("The number of rows and columns must be positive integers.")
+            break
+        except ValueError as e:
+            print(f"Invalid input: {e}. Please enter valid positive integers.")
+
     matrix = []
+    print(f"Enter the elements of {rows}x{cols} matrix (row-wise):")
+
     for i in range(rows):
-        row = list(map(float, input().split()))
-        matrix.append(row)
+        while True:
+            try:
+                row = list(map(float, input(f"Enter row {i+1} (separate elements with spaces): ").split()))
+                if len(row) != cols:
+                    raise ValueError(f"Row {i+1} must have exactly {cols} elements.")
+                matrix.append(row)
+                break
+            except ValueError as e:
+                print(f"Invalid input: {e}. Please try again.")
+    
     return np.array(matrix)
 
 # Matrix operations functions
