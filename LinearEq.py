@@ -120,7 +120,7 @@ def numpy_solve(A, B):
         return None
 
 # Main function to run the program
-def run_Linear_Equation ():
+def run_Linear_Equation():
     while True:
         algorithm_menu()
         choice = input("Choose an option (1-4): ")

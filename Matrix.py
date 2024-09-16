@@ -1,5 +1,4 @@
 import numpy as np
-
 # Function to display the matrix menu
 def matrix_menu():
     print("---------------------------- MATRIX MENU -----------------------------------")
