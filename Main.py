@@ -5,7 +5,7 @@ def main():
     while True:
         print("----------------------------- MAIN MENU ---------------------------------")
         print("Choose the program:")
-        print("1. Metrix Operation")
+        print("1. Matrix Operation")
         print("2. Solve Linear equations")
         print("0. CLOSE THE PROGRAM")
         print("---------------------------------------------------------------")
